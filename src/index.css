@@ -17,10 +17,10 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 215 25% 15%;
 
-    /* Professional blue primary */
-    --primary: 214 84% 45%;
+    /* Professional blue primary - Enhanced for visibility */
+    --primary: 217 91% 60%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 214 84% 65%;
+    --primary-glow: 200 100% 70%;
 
     /* Secure gray secondary */
     --secondary: 215 15% 92%;
@@ -135,6 +135,33 @@ All colors MUST be HSL.
   .card-3d:hover {
     transform: translateY(-8px) rotateX(2deg) rotateY(2deg);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 0 20px hsl(var(--primary) / 0.2);
+  }
+
+  .hero-3d {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-3d::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+    transform: translateX(-100%);
+    animation: shine 3s infinite;
+    z-index: 1;
+  }
+
+  .text-shadow-glow {
+    text-shadow: 0 0 20px rgba(59, 130, 246, 0.5), 0 0 40px rgba(59, 130, 246, 0.3);
+  }
+
+  @keyframes shine {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
   }
 
   .float-animation {

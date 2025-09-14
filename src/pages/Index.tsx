@@ -43,11 +43,12 @@ const Index = () => {
       
       {/* Hero Section */}
       <div 
-        className="relative bg-gradient-hero text-white parallax-container"
+        className="relative bg-gradient-hero text-white parallax-container min-h-screen flex items-center hero-3d"
         style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${evidenceHero})`,
+          backgroundImage: `linear-gradient(135deg, rgba(16, 24, 40, 0.95), rgba(30, 41, 59, 0.9)), url(${evidenceHero})`,
           backgroundSize: 'cover',
-          backgroundPosition: 'center'
+          backgroundPosition: 'center center',
+          backgroundAttachment: 'fixed'
         }}
       >
         <div className="parallax-layer parallax-back opacity-20">
@@ -61,27 +62,31 @@ const Index = () => {
         
         <div className="parallax-layer parallax-front">
           <div className="container mx-auto px-4 py-16">
-            <div className="max-w-3xl">
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fade-in">
-                Incident Evidence
-                <span className="block text-primary-glow drop-shadow-lg">Blockchain Registry</span>
+            <div className="max-w-4xl mx-auto text-center">
+              <h1 className="text-5xl md:text-7xl font-bold mb-8 animate-fade-in text-shadow-glow">
+                <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent">
+                  Incident Evidence
+                </span>
+                <span className="block text-4xl md:text-6xl mt-4 text-white drop-shadow-2xl">
+                  Blockchain Registry
+                </span>
               </h1>
-              <p className="text-xl mb-8 text-gray-200 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-                Immutable evidence storage using IPFS and blockchain technology. 
-                Secure, verifiable, and tamper-proof incident documentation.
+              <p className="text-xl md:text-2xl mb-12 text-gray-100 animate-fade-in max-w-3xl mx-auto leading-relaxed" style={{ animationDelay: '0.2s' }}>
+                Revolutionary immutable evidence storage using IPFS and blockchain technology. 
+                <span className="block mt-2 text-cyan-300 font-semibold">Secure, verifiable, and tamper-proof incident documentation.</span>
               </p>
-              <div className="flex items-center gap-4 text-sm text-gray-300 animate-fade-in" style={{ animationDelay: '0.4s' }}>
-                <div className="flex items-center gap-2 hover:scale-105 transition-transform">
-                  <Shield className="h-4 w-4" />
-                  <span>Cryptographically Signed</span>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '0.4s' }}>
+                <div className="flex flex-col items-center gap-3 p-4 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300 card-3d">
+                  <Shield className="h-8 w-8 text-cyan-400" />
+                  <span className="text-white font-semibold">Cryptographically Signed</span>
                 </div>
-                <div className="flex items-center gap-2 hover:scale-105 transition-transform">
-                  <Database className="h-4 w-4" />
-                  <span>IPFS Storage</span>
+                <div className="flex flex-col items-center gap-3 p-4 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300 card-3d">
+                  <Database className="h-8 w-8 text-purple-400" />
+                  <span className="text-white font-semibold">IPFS Storage</span>
                 </div>
-                <div className="flex items-center gap-2 hover:scale-105 transition-transform">
-                  <Link className="h-4 w-4" />
-                  <span>Blockchain Verified</span>
+                <div className="flex flex-col items-center gap-3 p-4 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300 card-3d">
+                  <Link className="h-8 w-8 text-blue-400" />
+                  <span className="text-white font-semibold">Blockchain Verified</span>
                 </div>
               </div>
             </div>
