@@ -95,27 +95,31 @@ export const EvidenceUpload = () => {
 
   return (
     <div className="space-y-6">
-      <Card className="bg-gradient-card shadow-card">
+      <Card className="bg-gradient-card shadow-card card-3d">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <Upload className="h-5 w-5 text-primary" />
+            <div className="pulse-3d">
+              <Upload className="h-5 w-5 text-primary" />
+            </div>
             Submit Evidence
           </CardTitle>
         </CardHeader>
         <CardContent>
           <div
             className={cn(
-              "border-2 border-dashed rounded-lg p-8 text-center transition-smooth",
+              "border-2 border-dashed rounded-lg p-8 text-center transition-smooth transform",
               isDragging 
-                ? "border-primary bg-primary/5 shadow-secure" 
-                : "border-border hover:border-primary/50"
+                ? "border-primary bg-primary/5 shadow-secure scale-105 rotate-1" 
+                : "border-border hover:border-primary/50 hover:scale-[1.02]"
             )}
             onDrop={handleDrop}
             onDragOver={(e) => e.preventDefault()}
             onDragEnter={() => setIsDragging(true)}
             onDragLeave={() => setIsDragging(false)}
           >
-            <Upload className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
+            <div className={isDragging ? "animate-pulse3d" : "float-animation"}>
+              <Upload className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
+            </div>
             <h3 className="text-lg font-medium mb-2">Drop evidence files here</h3>
             <p className="text-muted-foreground mb-4">
               Logs, PCAP dumps, documents, or any digital evidence
@@ -127,7 +131,7 @@ export const EvidenceUpload = () => {
               className="hidden"
               id="evidence-upload"
             />
-            <Button asChild variant="outline">
+            <Button asChild variant="outline" className="btn-3d">
               <label htmlFor="evidence-upload" className="cursor-pointer">
                 Select Files
               </label>
@@ -137,7 +141,7 @@ export const EvidenceUpload = () => {
       </Card>
 
       {evidenceFiles.length > 0 && (
-        <Card className="shadow-card">
+        <Card className="shadow-card card-3d animate-fade-in">
           <CardHeader>
             <CardTitle>Evidence Records</CardTitle>
           </CardHeader>
@@ -145,10 +149,13 @@ export const EvidenceUpload = () => {
             {evidenceFiles.map((evidence, index) => (
               <div
                 key={index}
-                className="flex items-center justify-between p-4 border rounded-lg bg-gradient-card"
+                className="flex items-center justify-between p-4 border rounded-lg bg-gradient-card card-3d animate-fade-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="flex items-center gap-3">
-                  <FileText className="h-5 w-5 text-muted-foreground" />
+                  <div className="rotate-3d">
+                    <FileText className="h-5 w-5 text-muted-foreground" />
+                  </div>
                   <div>
                     <p className="font-medium">{evidence.file.name}</p>
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -158,14 +165,18 @@ export const EvidenceUpload = () => {
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
-                  <StatusBadge status={evidence.status}>
-                    {evidence.status === 'pending' && 'Pending'}
-                    {evidence.status === 'processing' && 'Processing'}
-                    {evidence.status === 'verified' && 'Verified'}
-                    {evidence.status === 'error' && 'Error'}
-                  </StatusBadge>
+                  <div className={evidence.status === 'verified' ? 'pulse-3d' : ''}>
+                    <StatusBadge status={evidence.status}>
+                      {evidence.status === 'pending' && 'Pending'}
+                      {evidence.status === 'processing' && 'Processing'}
+                      {evidence.status === 'verified' && 'Verified'}
+                      {evidence.status === 'error' && 'Error'}
+                    </StatusBadge>
+                  </div>
                   {evidence.status === 'verified' && (
-                    <Shield className="h-4 w-4 text-accent" />
+                    <div className="float-animation">
+                      <Shield className="h-4 w-4 text-accent" />
+                    </div>
                   )}
                 </div>
               </div>
