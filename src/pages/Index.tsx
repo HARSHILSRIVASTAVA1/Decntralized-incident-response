@@ -64,7 +64,7 @@ const Index = () => {
             <div className="max-w-3xl">
               <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fade-in">
                 Incident Evidence
-                <span className="block text-primary-glow pulse-3d">Blockchain Registry</span>
+                <span className="block text-primary-glow drop-shadow-lg">Blockchain Registry</span>
               </h1>
               <p className="text-xl mb-8 text-gray-200 animate-fade-in" style={{ animationDelay: '0.2s' }}>
                 Immutable evidence storage using IPFS and blockchain technology. 
